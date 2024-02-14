@@ -49,7 +49,8 @@ public class SPlayer : MonoBehaviour
     {
 
         Debug.Log("Disparo");
-        Instantiate(prefabBullet, transform.position, Quaternion.identity);
+        SPlayerBullet bullet = Instantiate(prefabBullet, transform.position, Quaternion.identity).GetComponent<SPlayerBullet>();
+        bullet.player = this;     
         canShoot = false;
     }
 }
