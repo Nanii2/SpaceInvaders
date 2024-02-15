@@ -32,7 +32,7 @@ public class SEnemyBullet : MonoBehaviour
         else if (collision.tag == "SPlayerBullet")
         {
             Destroy(gameObject);
-            Destroy(Collision2D);
+            
 
         }
     }

@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - SBarrier
+  - SPlayerBullet
+  - Sinvader
   layers:
   - Default
   - TransparentFX

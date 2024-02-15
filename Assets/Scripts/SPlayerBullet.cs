@@ -27,6 +27,12 @@ public class SPlayerBullet : MonoBehaviour
             Destroy(gameObject);
 
         }
+        else if (collision.tag == "Sinvader")
+        {
+
+            Destroy(gameObject);
+            Destroy(collision.gameObject);
+        }
     }
 
     private void OnDestroy()
