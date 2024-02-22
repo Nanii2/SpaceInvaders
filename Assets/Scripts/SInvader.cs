@@ -7,6 +7,8 @@ public class SInvader : MonoBehaviour
 
     public GameObject particulaMuerte;
     public bool isQuitting = false;
+    public SInvaderMovement parent;
+
 
     // Start is called before the first frame update
     void Start()
@@ -14,6 +16,15 @@ public class SInvader : MonoBehaviour
         
     }
 
+    private void OnTriggerEnter2d(Collider2D collision)
+    {
+        if(collision.tag == "SBorder")//choca con borde de pantalla 
+        {
+            //llamar a SwitchDirection para que el padre gire
+            parent.SwitchDirection();
+        }
+
+    }
     // Update is called once per frame
     void Update()
     {
