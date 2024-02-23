@@ -154,6 +154,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   despAbajo: 1
+  canSwitch: 1
+  switchDelay: 0.5
 --- !u!4 &279840571
 Transform:
   m_ObjectHideFlags: 0
@@ -163,7 +165,7 @@ Transform:
   m_GameObject: {fileID: 279840569}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.04, y: 1.05259, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -346,7 +348,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -910,13 +912,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2a8ea008d3ddf147a826a3cb1617762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nFilas: 5
-  nColumnas: 11
+  nFilas: 2
+  nColumnas: 4
   alien1Prefab: {fileID: 7415083688251500977, guid: eb66b7fd4fdf7844d9016db265950bc4, type: 3}
   alien2Prefab: {fileID: 1821401073113717755, guid: 989d4d790b72b0549842f1c2e68083a6, type: 3}
   alien3Prefab: {fileID: 5573625313491084402, guid: 846ab9a834d38dc4faec7da456bffa4b, type: 3}
   padreAliens: {fileID: 279840570}
-  distanciaAliens: 1
+  distanciaAliens: 1.3
 --- !u!4 &1707623656
 Transform:
   m_ObjectHideFlags: 0
@@ -926,8 +928,8 @@ Transform:
   m_GameObject: {fileID: 1707623654}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8670848, y: 1.05259, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

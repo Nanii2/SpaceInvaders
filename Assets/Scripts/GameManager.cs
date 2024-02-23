@@ -26,9 +26,10 @@ public class GameManager : MonoBehaviour
     {
         //Decimos que matrizAliens es una nueva matriz de SInvaders de nColumnas x nFilas
         // - INICIALIZACION
-        matrizAliens = new SInvader[nFilas, nColumnas];
+        matrizAliens = new SInvader[nColumnas, nFilas];
         /*Vector3 v;
         v = new Vector3(0, 0, 0);*/
+        SpawnAliens();
     }
 
     void SpawnAliens()
