@@ -5,6 +5,7 @@ using UnityEngine;
 public class SEnemyBullet : MonoBehaviour
 {
     public float speed = 3;
+    public GameObject bulletExplosion;
 
     // Start is called before the first frame update
     void Start()
@@ -15,7 +16,7 @@ public class SEnemyBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       transform.position += new Vector3(0, -speed, 0) * Time.deltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -7,10 +7,12 @@ public class SInvader : MonoBehaviour
 
     public GameObject particulaMuerte;
     public bool isQuitting = false;
-    public SInvaderMovement parent;
+    public SInvaderMovement padre;
 
-    public GameObject invaderBullet;
+    public GameObject EnemyBullet;
+    public float bulletSpawnYOffset = -0.65f;
 
+    public int puntosGanados = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -20,10 +22,14 @@ public class SInvader : MonoBehaviour
 
     private void OnTriggerEnter2d(Collider2D collision)
     {
-        if(collision.tag == "SBarrier")//choca con borde de pantalla 
+        if(collision.tag == "SBorder")//choca con borde de pantalla 
         {
             //llamar a SwitchDirection para que el padre gire
-            parent.SwitchDirection();
+            padre.SwitchDirection();
+        }
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("SGameOverBarrier"))
+        {
+            SGameManager.instance.PlayerGameOver();
         }
 
     }
@@ -35,21 +41,24 @@ public class SInvader : MonoBehaviour
 
     public void Shoot()
     {
-        Instantiate(invaderBullet, transform.position, Quaternion.identity);
+        Vector3 aux = transform.position + new Vector3(0, bulletSpawnYOffset, 0); // Modificar posición spawn
+        Instantiate(EnemyBullet, aux, Quaternion.identity); // Spawnear la bala
 
     }
 
-    public void OnApplicationQuit()
+    private void OnApplicationQuit() // Se llama al cerrar la aplicación, antes del OnDestroy
     {
         isQuitting = true;
     }
+
 
     private void OnDestroy()
     {
         if(isQuitting == false)
         {
             GameObject particula = Instantiate(particulaMuerte, transform.position, Quaternion.identity);
-           // Destroy(particula, 0.3f);
+            // Destroy(particula, 0.3f);
+            SGameManager.instance.AddScore(puntosGanados);
         }
     }
 }

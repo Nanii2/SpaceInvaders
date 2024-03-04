@@ -585,13 +585,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprite_sheet_clean_22
+      name: barrier_01
       rect:
         serializedVersion: 2
-        x: 46
-        y: 81
-        width: 22
-        height: 16
+        x: 49
+        y: 95
+        width: 2
+        height: 2
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1697,6 +1697,90 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: barrier_02
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 95
+        width: 2
+        height: 2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3396b55e19c3144ea8fb02b9cc16c62
+      internalID: -1228513224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barrier_03
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 83
+        width: 2
+        height: 2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35ed085e4b793624e9f1a60ebe0f7859
+      internalID: 1656950414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barrier_04
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 83
+        width: 2
+        height: 2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d10c0a2d5c884eb499fb3f93fbc35137
+      internalID: -553754194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barrier_05
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 81
+        width: 2
+        height: 2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5e83fc13bce0f24f8e5b7638e07bbba
+      internalID: -117295039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1717,6 +1801,11 @@ TextureImporter:
       Alien_die1: -907079036
       Alien_die2: 1704645185
       Ovni: -77664537
+      barrier_01: -27856399
+      barrier_02: -1228513224
+      barrier_03: 1656950414
+      barrier_04: -553754194
+      barrier_05: -117295039
       sprite_sheet_clean_10: -1706625345
       sprite_sheet_clean_11: 939011657
       sprite_sheet_clean_12: 733336192
@@ -1727,7 +1816,6 @@ TextureImporter:
       sprite_sheet_clean_17: -1655912452
       sprite_sheet_clean_18: 566068615
       sprite_sheet_clean_21: -177324479
-      sprite_sheet_clean_22: -1249987938
       sprite_sheet_clean_23: -27856399
       sprite_sheet_clean_24: -1679501130
       sprite_sheet_clean_25: 1540233358

@@ -34,13 +34,13 @@ public class SPlayer : MonoBehaviour
         else if(Input.GetKey(moveLeftKey))
         {
             //voy a la izquierda
-            transform.position += new Vector3(speed, 0, 0) * Time.deltaTime;
+            transform.position += new Vector3(-speed, 0, 0) * Time.deltaTime;
 
         }
         else if (Input.GetKey(moveRightKey))
         {
             // voy a la derecha
-            transform.position += new Vector3(-speed, 0, 0) * Time.deltaTime;
+            transform.position += new Vector3(speed, 0, 0) * Time.deltaTime;
 
         }
     }
