@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SEnemyBullet : MonoBehaviour
 {
-    public float speed = 3;
+    public float speed = 1;    
     public GameObject bulletExplosion;
 
     // Start is called before the first frame update
@@ -24,7 +24,7 @@ public class SEnemyBullet : MonoBehaviour
         if (collision.tag == "SBarrier")
         {
             Destroy(gameObject);
-
+            Destroy(collision.gameObject);
         }
         else if (collision.tag =="Player")
         {

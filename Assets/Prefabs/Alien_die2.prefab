@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6458731350806419801}
   - component: {fileID: 4680190645162940663}
+  - component: {fileID: 4509654900671613071}
   m_Layer: 0
   m_Name: Alien_die2
   m_TagString: Untagged
@@ -84,3 +85,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4509654900671613071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2263331154379535999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96c1f5f3986f7f243bc3d66aac1529a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 0.5

@@ -186,10 +186,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88c77288ab76ab944b8ca0fde4f1b05a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  despAbajo: 1
+  speed: 0.2
+  despAbajo: 0.2
   canSwitch: 1
-  switchDelay: 0.5
+  switchDelay: 0.2
 --- !u!4 &279840571
 Transform:
   m_ObjectHideFlags: 0
@@ -199,7 +199,7 @@ Transform:
   m_GameObject: {fileID: 279840569}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.41, y: 4.61, z: 0}
+  m_LocalPosition: {x: -0.02, y: 4.61, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -383,7 +383,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1332,6 +1332,7 @@ GameObject:
   - component: {fileID: 1520552144}
   - component: {fileID: 1520552143}
   - component: {fileID: 1520552145}
+  - component: {fileID: 1520552146}
   m_Layer: 0
   m_Name: player1
   m_TagString: Player
@@ -1426,6 +1427,28 @@ MonoBehaviour:
   moveRightKey: 100
   posDisparo: {fileID: 1256446457}
   canShoot: 1
+  pAnimator: {fileID: 0}
+--- !u!95 &1520552146
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520552142}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9fc3e510aa425d84e9d2cf26a03705fa, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1553035891
 GameObject:
   m_ObjectHideFlags: 0
@@ -1997,7 +2020,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

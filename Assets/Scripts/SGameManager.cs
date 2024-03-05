@@ -39,6 +39,8 @@ public class SGameManager : MonoBehaviour
     public GameObject spriteVida3;
     public GameObject spriteVida2;
 
+    private SPlayer player;
+
     //distanciaentre aliens al spawnearlos
     private void Awake()
     {
@@ -48,6 +50,8 @@ public class SGameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        player = FindAnyObjectByType<SPlayer>();
         //Decimos que matrizAliens es una nueva matriz de SInvaders de nColumnas x nFilas
         // - INICIALIZACION
         matrizAliens = new SInvader[nColumnas, nFilas];
@@ -143,12 +147,21 @@ public class SGameManager : MonoBehaviour
     {
         vidas--;
         UpdateLifeUI();
+        player.PlayerDamaged();
+        Invoke("UnlockDamagedPlayer", 1.5f);
         if(vidas <= 0)
         {
             PlayerGameOver();
         }
 
     }
+    private void UnlockDamagedPlayer()
+    {
+
+        player.PlayerReset();
+
+    }
+
     private void UpdateLifeUI()
     {
         lifesText.text = vidas.ToString();

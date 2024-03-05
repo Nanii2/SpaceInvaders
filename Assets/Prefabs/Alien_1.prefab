@@ -137,7 +137,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -167,6 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particulaMuerte: {fileID: 2263331154379535999, guid: 529e039c4e43b694ba140520252c8ca7, type: 3}
   isQuitting: 0
-  parent: {fileID: 0}
+  padre: {fileID: 0}
   EnemyBullet: {fileID: 6241753782491136066, guid: 2554c329fffcfe14382b3ad2bc9be1c2, type: 3}
   bulletSpawnYOffset: -0.65
+  puntosGanados: 10

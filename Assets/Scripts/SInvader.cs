@@ -20,10 +20,11 @@ public class SInvader : MonoBehaviour
         Invoke("Shoot", Random.Range(0f, 20f));
     }
 
-    private void OnTriggerEnter2d(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "SBorder")//choca con borde de pantalla 
         {
+            Debug.Log("ha chocado");
             //llamar a SwitchDirection para que el padre gire
             padre.SwitchDirection();
         }
