@@ -31,6 +31,7 @@ public class SGameManager : MonoBehaviour
     public int score = 0;
 
     private int defeatedAliens = 0;
+    public float playerDamageDelay = 1.5f;
 
     public static SGameManager instance = null;
 
@@ -145,21 +146,28 @@ public class SGameManager : MonoBehaviour
 
     public void DamagePlayer()
     {
-        vidas--;
-        UpdateLifeUI();
-        player.PlayerDamaged();
-        Invoke("UnlockDamagedPlayer", 1.5f);
-        if(vidas <= 0)
+        if (!gameOver && player.GetCanMove())
         {
-            PlayerGameOver();
+            vidas--;
+            UpdateLifeUI();
+            //animacion de daño del jugador
+            player.PlayerDamaged();
+            padreAliens.canMove = false; //bloqueo los aliens
+            SetInvadersAnim(false);
+            Invoke("UnlockDamagedPlayer", 1.5f);
+            if (vidas <= 0)
+            {
+                PlayerGameOver();
+            }
         }
 
     }
     private void UnlockDamagedPlayer()
     {
 
-        player.PlayerReset();
-
+        player.PlayerReset(); //desbloqueo al jugador
+        padreAliens.canMove = true; // desbloqueo los aliens
+        SetInvadersAnim(true);
     }
 
     private void UpdateLifeUI()
@@ -199,6 +207,27 @@ public class SGameManager : MonoBehaviour
 
         score += points;
         scoreText.text = "score\n" + score.ToString();
+        
+
+    }
+
+    private void SetInvadersAnim(bool movement)
+    {
+
+        for ( int i = 0; i < nColumnas; i++)
+        {
+            for (int j = 0; i < nFilas; j++)
+            {
+                if(matrizAliens[i,j] != null)
+                {
+                    matrizAliens[i, j].MovementAnimation();
+                }
+                else
+                {
+                    matrizAliens[i, j].StunAnimation();
+                }
+            }
+        }
 
     }
 }

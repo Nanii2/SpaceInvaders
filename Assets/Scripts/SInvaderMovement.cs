@@ -11,6 +11,8 @@ public class SInvaderMovement : MonoBehaviour
 
     public bool canSwitch = true; //bool que indica si puede girarse
     public float switchDelay = 0.5f; // tiempo que debe pasar despues de girar, para poder volver a hacerlo
+    public bool canMove = true; //bool que indica que si puede moverse
+    public float moveStunTime = 0.5f;
 
     private SGameManager gm;
     /*
@@ -28,7 +30,7 @@ public class SInvaderMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!gm.gameOver)
+        if(!gm.gameOver && canMove)
         {
             Movement();
         }
@@ -56,10 +58,26 @@ public class SInvaderMovement : MonoBehaviour
 
     }
 
-    private void ActivaGiro()
+    private void ActivaGiro() //pone canSwitch a true
     {
 
         canSwitch = true;
+
+    }
+
+    public void EnableMovement()
+    {
+        canMove = true;
+        gm.SetInvadersAnim(true);
+
+    }
+   
+    public void AlienDestroyedStun() // Metodo que se llama cuando destruye un alien y que para su movimiento un tiempo
+    {
+        canMove = false; //paramos el movimiento
+        // reactivamos el movimiento tras un tiempo
+        gm.SetInvadersAnim(false);
+        Invoke("EnableMovement",moveStunTime);
 
     }
 }

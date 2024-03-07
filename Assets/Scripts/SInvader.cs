@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+enum InvaderType {SQUID, CRAB, OCTOPUS };
+
 public class SInvader : MonoBehaviour
 {
+    public InvaderType tipo = InvaderType.SQUID;
 
     public GameObject particulaMuerte;
     public bool isQuitting = false;
@@ -14,9 +17,14 @@ public class SInvader : MonoBehaviour
 
     public int puntosGanados = 10;
 
+    public static int speed = 3;
+
+    private Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
+        
         Invoke("Shoot", Random.Range(0f, 20f));
     }
 
@@ -59,7 +67,42 @@ public class SInvader : MonoBehaviour
         {
             GameObject particula = Instantiate(particulaMuerte, transform.position, Quaternion.identity);
             // Destroy(particula, 0.3f);
+            //Stun a los aliens
+            padre.AlienDestroyedStun();
+
+            //suma puntos
             SGameManager.instance.AddScore(puntosGanados);
         }
+    }
+
+    public void MovementAnimation()
+    {
+        /*if(tipo == InvaderType.SQUID)
+        {
+
+            animator.Play("alien_1_idle");
+
+        }
+        else if (tipo == InvaderType.CRAB)
+        {
+
+            animator.Play("alien_2_idle");
+
+        }
+        else if (tipo == InvaderType.OCTOPUS)
+        {
+
+            animator.Play("alien_3_idle");
+
+        }*/
+
+        animator.Play("alien_" + ((int)tipo+1) + "_idle");
+    }
+
+    public void StunAnimation()
+    {
+
+        animator.Play("alien_" + ((int)tipo + 1) + "_stun");
+
     }
 }

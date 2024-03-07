@@ -84,9 +84,20 @@ public class SPlayer : MonoBehaviour
 
     public void PlayerReset()
     {
-
+        pAnimator.Play("player_idle");
         canMove = true;
         transform.position = posInicial;
+
+    }
+
+    public bool GetCanMove()
+    {
+        return canMove;
+    }
+
+    public void SetCanMove(bool b)
+    {
+        canMove = b;
 
     }
 }
