@@ -9,6 +9,9 @@ public class SInvaderMovement : MonoBehaviour
     public float despAbajo = 1f; // distancia que baja al cambiar la direccion
     private int dir = 1;// +1 derecha, -1 izquierda
 
+    [HideInInspector]
+    public float originalSpeed = 3f;//velocidad inicial
+
     public bool canSwitch = true; //bool que indica si puede girarse
     public float switchDelay = 0.5f; // tiempo que debe pasar despues de girar, para poder volver a hacerlo
     public bool canMove = true; //bool que indica que si puede moverse
@@ -25,6 +28,7 @@ public class SInvaderMovement : MonoBehaviour
     void Start()
     {
         gm = SGameManager.instance;
+        originalSpeed = speed;
     }
 
     // Update is called once per frame

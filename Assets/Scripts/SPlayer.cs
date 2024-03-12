@@ -24,6 +24,8 @@ public class SPlayer : MonoBehaviour
 
     private Vector3 posInicial;
 
+    public float limiteHorizontal = 8f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,12 +57,27 @@ public class SPlayer : MonoBehaviour
         {
             //voy a la izquierda
             transform.position += new Vector3(-speed, 0, 0) * Time.deltaTime;
+            if(transform.position.x < -limiteHorizontal)
+            {
+
+                Vector3 aux = transform.position;
+                aux.x = -limiteHorizontal;
+                transform.position = aux;
+            }
 
         }
         else if (Input.GetKey(moveRightKey))
         {
             // voy a la derecha
             transform.position += new Vector3(speed, 0, 0) * Time.deltaTime;
+            if (transform.position.x < -limiteHorizontal)
+            {
+
+                Vector3 aux = transform.position;
+                aux.x = limiteHorizontal;
+                transform.position = aux;
+            }
+
 
         }
 

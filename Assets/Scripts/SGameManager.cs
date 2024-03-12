@@ -33,12 +33,21 @@ public class SGameManager : MonoBehaviour
     private int defeatedAliens = 0;
     public float playerDamageDelay = 1.5f;
 
+    public float incrVel = 3;
+
     public static SGameManager instance = null;
 
+    //INTERFAZ
     public TextMeshPro scoreText;
     public TextMeshPro lifesText;
     public GameObject spriteVida3;
     public GameObject spriteVida2;
+
+    //OVNI
+    public GameObject prefabOVNI;
+    public Transform spawnIzqOVNI;
+    public Transform spawnDerOVNI;
+    public float spawnOvniTime = 15f;
 
     private SPlayer player;
 
@@ -60,6 +69,8 @@ public class SGameManager : MonoBehaviour
         v = new Vector3(0, 0, 0);*/
         SpawnAliens();
         InvokeRepeating("SelectAlienShoot", tiempoEntreDisparos, tiempoEntreDisparos);
+        InvokeRepeating("SpawnOvni", spawnDerOVNI, spawnOvniTime);
+
 
 
     }
@@ -92,6 +103,25 @@ public class SGameManager : MonoBehaviour
         //dentro de los dos bucles, intanciamos un alien
         // lo guardamos en la posicion de la matriz apropiada
         //colocaos el alien
+    }
+
+    void SpawnOVNI()
+    {
+        int random = Random.Range(0, 2); //entre 0 y 1
+
+        //Si sale 0, lo colocamos a la izquierda
+        if (random == 0)
+        {
+            //crearlo y ponerle la direccion apropiada
+            Instantiate(prefabOVNI, spawnIzqOVNI).GetComponent<SOvni>().dir = 1;
+
+        }
+        else if (random == 1)
+        {
+            Instantiate(prefabOVNI, spawnDerOVNI).GetComponent<SOvni>().dir = -1;
+
+        }
+
     }
 
     // Update is called once per frame
@@ -186,6 +216,15 @@ public class SGameManager : MonoBehaviour
     public void AlienDestroyed()
     {
         defeatedAliens++; //aumento la cuenta de aliens derrotados
+        //actualizar velocidad de los aliens segun cuantos quedan 
+
+        //(1 + (aliensDerrotados / alienTotales) * incVelocidad) * speedAliens
+        // 1 + (0/55) * 3) * 2 = 2
+        // 1 + (55/55) * 3) * 2 = 8
+
+        //suma incrVelocidad / aliensTotales
+        padreAliens.speed += (1f / (float)(nFilas * nColumnas)) * incrVel;
+
         if(defeatedAliens >= nFilas * nColumnas)
         {
             PlayerWin();
