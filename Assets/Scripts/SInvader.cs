@@ -9,7 +9,6 @@ public class SInvader : MonoBehaviour
     public InvaderType tipo = InvaderType.SQUID;
 
     public GameObject particulaMuerte;
-    public bool isQuitting = false;
     public SInvaderMovement padre;
 
     public GameObject EnemyBullet;
@@ -40,6 +39,19 @@ public class SInvader : MonoBehaviour
         {
             SGameManager.instance.PlayerGameOver();
         }
+        else if (collision.tag == "SPlayerBullet")
+        {
+            SGameManager.instance.AlienDestroyed();
+
+            GameObject particula = Instantiate(particulaMuerte, transform.position, Quaternion.identity);
+            // Destroy(particula, 0.3f);
+            //Stun a los aliens
+            padre.AlienDestroyedStun();
+
+            //suma puntos
+            SGameManager.instance.AddScore(puntosGanados);
+
+        }
 
     }
     // Update is called once per frame
@@ -55,25 +67,6 @@ public class SInvader : MonoBehaviour
 
     }
 
-    private void OnApplicationQuit() // Se llama al cerrar la aplicación, antes del OnDestroy
-    {
-        isQuitting = true;
-    }
-
-
-    private void OnDestroy()
-    {
-        if(isQuitting == false)
-        {
-            GameObject particula = Instantiate(particulaMuerte, transform.position, Quaternion.identity);
-            // Destroy(particula, 0.3f);
-            //Stun a los aliens
-            padre.AlienDestroyedStun();
-
-            //suma puntos
-            SGameManager.instance.AddScore(puntosGanados);
-        }
-    }
 
     public void MovementAnimation()
     {

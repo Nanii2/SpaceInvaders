@@ -39,6 +39,7 @@ public class SGameManager : MonoBehaviour
 
     //INTERFAZ
     public TextMeshPro scoreText;
+    public TextMeshPro hiScore;
     public TextMeshPro lifesText;
     public GameObject spriteVida3;
     public GameObject spriteVida2;
@@ -48,6 +49,9 @@ public class SGameManager : MonoBehaviour
     public Transform spawnIzqOVNI;
     public Transform spawnDerOVNI;
     public float spawnOvniTime = 15f;
+
+    public int highScore = 0;
+ 
 
     private SPlayer player;
 
@@ -69,9 +73,10 @@ public class SGameManager : MonoBehaviour
         v = new Vector3(0, 0, 0);*/
         SpawnAliens();
         InvokeRepeating("SelectAlienShoot", tiempoEntreDisparos, tiempoEntreDisparos);
-        InvokeRepeating("SpawnOvni", spawnDerOVNI, spawnOvniTime);
+        InvokeRepeating("SpawnOvni", spawnOvniTime, spawnOvniTime);
 
-
+        highScore = PlayerPrefs.GetInt("HIGH-SCORE");
+        hiScore.text = "HI-SCORE '\n' " + highScore.ToString();
 
     }
 
@@ -161,7 +166,7 @@ public class SGameManager : MonoBehaviour
         gameOver = true;
         Debug.Log("el jugador ha perdido");
         CancelInvoke();
-        
+        Invoke("ResetGame", 2);
 
     }
 
@@ -170,6 +175,7 @@ public class SGameManager : MonoBehaviour
         gameOver = true;
         Debug.Log("el jugador ha ganado");
         CancelInvoke();
+        Invoke("ResetGame", 2);
 
 
     }
@@ -235,12 +241,25 @@ public class SGameManager : MonoBehaviour
     public void ResetGame()
     {
 
+        UpdateHighScore();
         SceneManager.LoadScene("DemoInvaders");
         
 
     }
    
-    //suma puntos
+    public void UpdateHighScore()
+    {
+        if (score > highScore) //si mi puntuacion es mayor que la maxima
+        {
+            PlayerPrefs.SetInt("HIGH-SCORE", score); //la guardo
+        }
+
+    }
+
+    private void OnApplicationQuit()
+    {
+        UpdateHighScore(); //si cerramos la aplicacion los puntos se quedan
+    }
     public void AddScore(int points)
     {
 
@@ -269,4 +288,6 @@ public class SGameManager : MonoBehaviour
         }
 
     }
+
+   
 }
