@@ -17,7 +17,7 @@ public class SPlayer : MonoBehaviour
     public Transform posDisparo;
 
     public bool canShoot = true;
-    private bool canMove = false;
+    private bool canMove = true;
 
     //animator del jugador
     public Animator pAnimator;
@@ -86,7 +86,7 @@ public class SPlayer : MonoBehaviour
     private void Shoot()
     {
 
-        Debug.Log("Disparo");
+        //Debug.Log("Disparo");
         SPlayerBullet bullet = Instantiate(prefabBullet, transform.position, Quaternion.identity).GetComponent<SPlayerBullet>();
         bullet.player = this;     
         canShoot = false;
@@ -95,7 +95,7 @@ public class SPlayer : MonoBehaviour
     public void PlayerDamaged()
     {
 
-        pAnimator.Play("player");
+        pAnimator.Play("Player");
         canMove = true;
     }
 

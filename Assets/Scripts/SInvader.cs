@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-enum InvaderType {SQUID, CRAB, OCTOPUS };
+public enum InvaderType {SQUID, CRAB, OCTOPUS };
 
 public class SInvader : MonoBehaviour
 {
@@ -23,15 +23,14 @@ public class SInvader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-        Invoke("Shoot", Random.Range(0f, 20f));
+        animator = gameObject.GetComponent<Animator>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "SBorder")//choca con borde de pantalla 
         {
-            Debug.Log("ha chocado");
+            //Debug.Log("ha chocado");
             //llamar a SwitchDirection para que el padre gire
             padre.SwitchDirection();
         }
@@ -42,7 +41,7 @@ public class SInvader : MonoBehaviour
         else if (collision.tag == "SPlayerBullet")
         {
             SGameManager.instance.AlienDestroyed();
-
+            //Debug.Log("Creada particula mmuerte");
             GameObject particula = Instantiate(particulaMuerte, transform.position, Quaternion.identity);
             // Destroy(particula, 0.3f);
             //Stun a los aliens
@@ -50,6 +49,10 @@ public class SInvader : MonoBehaviour
 
             //suma puntos
             SGameManager.instance.AddScore(puntosGanados);
+            // destruir alien y bala
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+
 
         }
 
@@ -89,13 +92,15 @@ public class SInvader : MonoBehaviour
 
         }*/
 
-        animator.Play("alien_" + ((int)tipo+1) + "_idle");
+        animator.Play("Alien_" + ((int)tipo+1) + "_idle");
     }
 
     public void StunAnimation()
     {
 
-        animator.Play("alien_" + ((int)tipo + 1) + "_stun");
+        animator.Play("Alien_" + ((int)tipo + 1) + "_stun");
 
     }
+
+
 }

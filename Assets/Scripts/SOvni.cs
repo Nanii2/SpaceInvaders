@@ -46,7 +46,7 @@ public class SOvni : MonoBehaviour
     {
         SGameManager.instance.AddScore(points);//Sumar puntos
         //animacion de destruirse
-        animator.Play("OVNI_Death");
+        animator.Play("OVNI_death");
         speed = 0;
         Destroy(gameObject, deathAnimTime);
 

@@ -73,7 +73,7 @@ public class SGameManager : MonoBehaviour
         v = new Vector3(0, 0, 0);*/
         SpawnAliens();
         InvokeRepeating("SelectAlienShoot", tiempoEntreDisparos, tiempoEntreDisparos);
-        InvokeRepeating("SpawnOvni", spawnOvniTime, spawnOvniTime);
+        InvokeRepeating("SpawnOVNI", spawnOvniTime, spawnOvniTime);
 
         highScore = PlayerPrefs.GetInt("HIGH-SCORE");
         hiScore.text = "HI-SCORE '\n' " + highScore.ToString();
@@ -96,18 +96,14 @@ public class SGameManager : MonoBehaviour
                 SInvader auxAlien = Instantiate(prefab, padreAliens.transform).GetComponent<SInvader>();
                 matrizAliens[i,j] = auxAlien;
                 auxAlien.transform.position += new Vector3(i-nColumnas/2,j-nFilas/2,0) * distanciaAliens;
-                //if (matrizAliens[i, j] == null) Debug.Log("alien no creado");
+                //if (matrizAliens[i, j] == null);
+                //Debug.Log("alien no creado")
                 auxAlien.padre = padreAliens;
 
             }
 
         }
-        
-        //doble bucle (anidado) que recorra la matriz (de 11 x 5, rangos 0.10 y 0-4)
-
-        //dentro de los dos bucles, intanciamos un alien
-        // lo guardamos en la posicion de la matriz apropiada
-        //colocaos el alien
+      
     }
 
     void SpawnOVNI()
@@ -164,7 +160,7 @@ public class SGameManager : MonoBehaviour
     public void PlayerGameOver()
     {
         gameOver = true;
-        Debug.Log("el jugador ha perdido");
+        //Debug.Log("el jugador ha perdido");
         CancelInvoke();
         Invoke("ResetGame", 2);
 
@@ -173,7 +169,7 @@ public class SGameManager : MonoBehaviour
     public void PlayerWin()
     {
         gameOver = true;
-        Debug.Log("el jugador ha ganado");
+        //Debug.Log("el jugador ha ganado");
         CancelInvoke();
         Invoke("ResetGame", 2);
 
@@ -242,7 +238,7 @@ public class SGameManager : MonoBehaviour
     {
 
         UpdateHighScore();
-        SceneManager.LoadScene("DemoInvaders");
+        SceneManager.LoadScene("SpaceInvaders");
         
 
     }
@@ -269,20 +265,23 @@ public class SGameManager : MonoBehaviour
 
     }
 
-    private void SetInvadersAnim(bool movement)
+    public void SetInvadersAnim(bool movement)
     {
 
         for ( int i = 0; i < nColumnas; i++)
         {
-            for (int j = 0; i < nFilas; j++)
+            for (int j = 0; j < nFilas; j++)
             {
                 if(matrizAliens[i,j] != null)
                 {
-                    matrizAliens[i, j].MovementAnimation();
-                }
-                else
-                {
-                    matrizAliens[i, j].StunAnimation();
+                    if (movement)
+                    {
+                        matrizAliens[i, j].MovementAnimation();
+                    }
+                    else
+                    {
+                        matrizAliens[i, j].StunAnimation();
+                    }
                 }
             }
         }

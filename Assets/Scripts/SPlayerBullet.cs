@@ -30,16 +30,8 @@ public class SPlayerBullet : MonoBehaviour
             Instantiate(bulletExplosion, transform.position, Quaternion.identity);
 
         }
-        else if (collision.tag == "Sinvader")
-        {
 
-            Destroy(gameObject);
-            Destroy(collision.gameObject);
-            SGameManager.instance.AlienDestroyed();
-
-
-        }
-        if (collision.tag == "SBarrier")
+        else if (collision.tag == "SBarrier")
         {
             Destroy(gameObject);
             Destroy(collision.gameObject);
@@ -50,7 +42,7 @@ public class SPlayerBullet : MonoBehaviour
 
     private void OnDestroy()
     {
-        Debug.Log("Bala Destruida");
+        //Debug.Log("Bala Destruida");
         player.canShoot = true;
     }
 }

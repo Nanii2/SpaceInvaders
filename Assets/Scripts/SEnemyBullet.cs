@@ -29,6 +29,7 @@ public class SEnemyBullet : MonoBehaviour
         else if (collision.tag =="Player")
         {
             Destroy(gameObject);
+            SGameManager.instance.DamagePlayer();
         }
         else if (collision.tag == "SPlayerBullet")
         {
