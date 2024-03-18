@@ -45,6 +45,7 @@ public class SGameManager : MonoBehaviour
     public GameObject spriteVida2;
     public GameObject gameOverText;
     public GameObject ui;
+    public GameObject Pwin;
 
     //OVNI
     public GameObject prefabOVNI;
@@ -81,6 +82,7 @@ public class SGameManager : MonoBehaviour
         hiScore.text = "HI-SCORE '\n' " + highScore.ToString();
 
         gameOverText.SetActive(false);
+        Pwin.SetActive(false);
         ui.SetActive(true);
 
     }
@@ -184,6 +186,9 @@ public class SGameManager : MonoBehaviour
         //Debug.Log("el jugador ha ganado");
         CancelInvoke();
         Invoke("ResetGame", 2);
+
+        Pwin.SetActive(true);
+        ui.SetActive(false);
 
 
     }
@@ -299,6 +304,5 @@ public class SGameManager : MonoBehaviour
         }
 
     }
-
    
 }
