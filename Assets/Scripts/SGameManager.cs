@@ -43,6 +43,8 @@ public class SGameManager : MonoBehaviour
     public TextMeshPro lifesText;
     public GameObject spriteVida3;
     public GameObject spriteVida2;
+    public GameObject gameOverText;
+    public GameObject ui;
 
     //OVNI
     public GameObject prefabOVNI;
@@ -77,6 +79,9 @@ public class SGameManager : MonoBehaviour
 
         highScore = PlayerPrefs.GetInt("HIGH-SCORE");
         hiScore.text = "HI-SCORE '\n' " + highScore.ToString();
+
+        gameOverText.SetActive(false);
+        ui.SetActive(true);
 
     }
 
@@ -162,7 +167,14 @@ public class SGameManager : MonoBehaviour
         gameOver = true;
         //Debug.Log("el jugador ha perdido");
         CancelInvoke();
+
+        
         Invoke("ResetGame", 2);
+
+        gameOverText.SetActive(true);
+        ui.SetActive(false);
+
+
 
     }
 
